@@ -61,7 +61,7 @@ def haspath(graph, src, des, visited, psf, wt, ip, k):
     if visited[child[1]]==False:
       haspath(graph, child[1], des, visited, psf + str(child[1]) , wt+child[2], ip, k)
   visited[src] = False
-  return s
+  return
 
 haspath(graph, s, d, visited, "0", 0, ip, k)
   

@@ -1,0 +1,18 @@
+def dfsOfGraph(self, adj):
+        # code here
+
+       
+        def dfs(adj , visited, ans, src):
+            visited[src] = 1
+            ans.append(src)
+            for child in adj[src]:
+                if visited[child] == 0:
+                    dfs(adj, visited , ans, child)
+        
+        v = len(adj)
+        visited = [0]*(v)
+        ans = []
+        dfs(adj , visited ,ans,0)
+        
+        return ans
+            

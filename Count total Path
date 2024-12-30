@@ -1,0 +1,30 @@
+class Solution:
+    def possible_paths(self, edges, n, start, destination):
+        #Code here
+        self.count = 0
+        graph = {}
+        for i in range(n):
+            graph[i] = []
+            
+        for i in edges:
+            graph[i[0]].append(edge(i[0],i[1]))
+            
+            
+        visited = [0]*(n)
+        
+        def countPath(graph , src , des , visited):
+            if src == des:
+                self.count += 1
+                return
+            
+            visited[src] = 1
+            for i in graph[src]:
+                if visited[i.nbr]==0:
+                    countPath(graph , i.nbr, des , visited)
+                    
+            visited[src] = 0
+            
+        
+        countPath(graph, start, destination , visited)
+        return self.count
+            

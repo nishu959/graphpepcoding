@@ -1,3 +1,8 @@
+class edge():
+    def __init__(self, src, nbr):
+        self.src = src
+        self.nbr = nbr
+        
 class Solution:
     def possible_paths(self, edges, n, start, destination):
         #Code here

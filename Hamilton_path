@@ -1,0 +1,46 @@
+class edge:
+    def __init__(self, src , nbr):
+        self.src = src
+        self.nbr = nbr
+        
+
+class Solution:
+    def check(self, N, M, Edges): 
+        #code here
+        
+        graph = {}
+        for i in range(1,N+1):
+            graph[i] = []
+            
+        for a, b in Edges:
+            graph[a].append(edge(a,b))
+            graph[b].append(edge(b,a))
+            
+            
+        visited= set()
+        
+       
+        
+        def dfs(graph , s , visited):
+            
+            if N-1 == len(visited):
+                return True
+            
+            visited.add(s)
+            for i in graph[s]:
+                if i.nbr not in visited:
+                    
+                    if dfs(graph , i.nbr , visited):
+                        return True
+            
+            
+            visited.remove(s)
+            
+            
+        
+        for i in range(1,N+1):
+            if dfs(graph , i , visited):
+                return True
+                
+        return False
+        
